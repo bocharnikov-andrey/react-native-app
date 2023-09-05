@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "components/*": ["./components/*"],
+      "constants/*": ["./constants/*"],
+      "context/*": ["./context/*"],
+      "screens/*": ["./screens/*"],
+    }
+  }
+}
