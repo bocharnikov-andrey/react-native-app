@@ -1,20 +1,20 @@
 import { FC, ReactNode } from "react";
-import { StyleSheet, Text, TextProps, TextStyle } from "react-native";
+import { StyleSheet, View, TextProps, TextStyle } from "react-native";
 
 type Props = TextProps & {
   children: ReactNode;
-  style?: TextStyle | TextStyle[];
   isRow?: boolean;
+  style?: TextStyle | TextStyle[];
 };
 
-const CenterView: FC<Props> = (props) => {
+const ViewCenter: FC<Props> = (props) => {
   const textStyle = styles({ ...props });
   const passedStyles = Array.isArray(props.style) ? Object.assign({}, ...props.style) : props.style;
 
   return (
-    <Text style={[textStyle.container, { ...passedStyles }]} {...props}>
+    <View {...props} style={[textStyle.container, { ...passedStyles }]}>
       {props.children}
-    </Text>
+    </View>
   );
 };
 
@@ -27,4 +27,4 @@ const styles = ({ isRow }: Props) =>
     },
   });
 
-export default CenterView;
+export default ViewCenter;
