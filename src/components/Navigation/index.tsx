@@ -1,26 +1,60 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, NavigationContainerRef } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FC } from "react";
+import { FC, useRef } from "react";
+import { Image, Text, View } from "react-native";
+import TopBar from "../TopBar";
+import { COLORS } from "../../constants/colors";
 import Portfolio from "../../screens/Portfolio/Portfolio";
 import Nemes from "../../screens/Nemes/Nemes";
 import Stocks from "../../screens/Stocks/Stocks";
 
 const Tab = createBottomTabNavigator();
 
+const PATHS = [
+  { id: 1, name: "Portfolio", component: Portfolio },
+  { id: 2, name: "Nemes", component: Nemes },
+  { id: 3, name: "Stocks", component: Stocks },
+];
+
 const Navigation: FC = () => {
-  const screenOptions = {
+  const navigationRef = useRef<NavigationContainerRef<any> | null>(null);
+
+  const screenOptions: any = {
+    tabBarShowLabel: false,
+    headerShown: false,
     tabBarStyle: {
-      backgroundColor: "#000",
+      height: 60,
+      backgroundColor: COLORS.black,
       borderTopWidth: 0,
     },
   };
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator initialRouteName="portfolio" screenOptions={screenOptions}>
-        <Tab.Screen name="Portfolio" component={Portfolio} options={{ headerShown: false }} />
-        <Tab.Screen name="Nemes" component={Nemes} options={{ headerShown: false }} />
-        <Tab.Screen name="Stocks" component={Stocks} options={{ headerShown: false }} />
+    <NavigationContainer ref={navigationRef}>
+      <TopBar navigationRef={navigationRef} />
+      <Tab.Navigator initialRouteName="Portfolio" screenOptions={screenOptions}>
+        {PATHS.map((p) => (
+          <Tab.Screen
+            key={p.id}
+            name={p.name}
+            component={p.component}
+            options={{
+              tabBarIcon: ({ focused }) => (
+                <View style={{ alignItems: "center", justifyContent: "center" }}>
+                  <Image
+                    style={{ width: 20, height: 20 }}
+                    source={require("../../../assets/images/favicon.png")}
+                  />
+                  <Text
+                    style={{ fontSize: 12, color: focused ? COLORS.white : COLORS.whiteOpacity }}
+                  >
+                    {p.name}
+                  </Text>
+                </View>
+              ),
+            }}
+          />
+        ))}
       </Tab.Navigator>
     </NavigationContainer>
   );

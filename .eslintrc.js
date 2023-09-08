@@ -52,11 +52,13 @@ module.exports = {
     "@typescript-eslint/no-var-requires": 0,
     "react-hooks/exhaustive-deps": 0,
     "react/jsx-no-useless-fragment": 0,
+    "react/no-unstable-nested-components": 0,
     "import/no-cycle": 0,
     "no-unused-vars": 0,
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-non-null-asserted-optional-chain": 0,
     "@typescript-eslint/no-non-null-assertion": 0,
+    "global-require": 0,
     "no-continue": "off",
   },
   settings: {
