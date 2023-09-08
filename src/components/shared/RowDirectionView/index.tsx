@@ -1,10 +1,11 @@
 import { FC, ReactNode } from "react";
-import { FlexStyle, StyleSheet, View, ViewProps } from "react-native";
+import { FlexStyle, StyleSheet, TextStyle, View, ViewProps } from "react-native";
 
 type Props = ViewProps & {
-  ai: FlexStyle["alignItems"];
-  jc: FlexStyle["justifyContent"];
   children: ReactNode;
+  ai?: FlexStyle["alignItems"];
+  jc?: FlexStyle["justifyContent"];
+  style?: TextStyle | TextStyle[];
   isRow?: boolean;
 };
 

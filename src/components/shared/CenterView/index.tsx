@@ -1,9 +1,10 @@
 import { FC, ReactNode } from "react";
-import { StyleSheet, Text, TextProps } from "react-native";
+import { StyleSheet, Text, TextProps, TextStyle } from "react-native";
 
 type Props = TextProps & {
-  isRow?: boolean;
   children: ReactNode;
+  style?: TextStyle | TextStyle[];
+  isRow?: boolean;
 };
 
 const CenterView: FC<Props> = (props) => {

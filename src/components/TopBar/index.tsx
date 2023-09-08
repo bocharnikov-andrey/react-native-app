@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
+import CenterView from "../shared/CenterView";
+import RowDirectionView from "../shared/RowDirectionView";
 import PrimaryButton from "../shared/PrimaryButton";
 import { COLORS } from "../../constants/colors";
 
@@ -18,8 +20,8 @@ const TopBar: FC<Props> = ({ navigationRef }) => {
   };
 
   return (
-    <View style={styles.topBar}>
-      <View style={styles.wrapper}>
+    <CenterView style={styles.topBar}>
+      <RowDirectionView style={styles.wrapper}>
         <TouchableOpacity onPress={returnToMainPage} onLongPress={() => null}>
           <Image
             source={require("../../../assets/images/favicon.png")}
@@ -35,8 +37,8 @@ const TopBar: FC<Props> = ({ navigationRef }) => {
             textColor={COLORS.black}
           />
         </View>
-      </View>
-    </View>
+      </RowDirectionView>
+    </CenterView>
   );
 };
 
