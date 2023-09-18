@@ -3,7 +3,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import Navigation from "./src/components/Navigation";
 import ColorSchemeProvider from "./src/contexts/ThemeContext";
-import SafeAreaContainer from "./src/components/shared/SafeAreaContainer";
+import SafeAreaContainer from "./src/components/layout/SafeAreaContainer";
 
 export default function App() {
   const [loaded, error] = useFonts({

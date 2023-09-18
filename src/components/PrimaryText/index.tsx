@@ -1,12 +1,13 @@
 import { FC, ReactNode } from "react";
 import { StyleProp, StyleSheet, Text, TextProps, TextStyle } from "react-native";
-import { COLORS } from "../../../constants/colors";
-import { FONTS } from "../../../constants/fonts";
+import { COLORS } from "../../constants/colors";
+import { FONTS } from "../../constants/fonts";
 
 type Props = TextProps & {
   textColor?: string;
   fontSize?: number;
   fontWeight?: number;
+  italicText?: boolean;
   style?: TextStyle | TextStyle[];
   children: ReactNode;
 };
@@ -32,28 +33,34 @@ const PrimaryText: FC<Props> = (props) => {
   }
 
   return (
-    <Text style={[weightedFontFamily, { ...passedStyles }]} {...props}>
+    <Text {...props} style={[weightedFontFamily, { ...passedStyles }]}>
       {props.children}
     </Text>
   );
 };
 
-const styles = ({ fontSize, textColor }: Omit<Props, "text">) =>
+const styles = ({ fontSize, textColor, italicText }: Omit<Props, "text">) =>
   StyleSheet.create({
     regular: {
       fontFamily: FONTS.regular,
       fontSize: fontSize || 14,
+      fontWeight: "400",
       color: textColor || COLORS.white,
+      fontStyle: italicText ? "italic" : "normal",
     },
     medium: {
       fontFamily: FONTS.medium,
       fontSize: fontSize || 14,
+      fontWeight: "500",
       color: textColor || COLORS.white,
+      fontStyle: italicText ? "italic" : "normal",
     },
     bold: {
       fontFamily: FONTS.bold,
       fontSize: fontSize || 14,
+      fontWeight: "700",
       color: textColor || COLORS.white,
+      fontStyle: italicText ? "italic" : "normal",
     },
   });
 

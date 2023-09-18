@@ -1,6 +1,7 @@
+import { FC } from "react";
 import { StyleSheet, View, Text } from "react-native";
 
-const Stocks = () => {
+const Stocks: FC = () => {
   return (
     <View style={styles.container}>
       <Text style={{ color: "#fff" }}>Stocks</Text>

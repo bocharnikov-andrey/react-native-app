@@ -1,10 +1,11 @@
 import { FC } from "react";
-import { Image, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
-import PrimaryButton from "../shared/PrimaryButton";
-import ViewCenter from "../shared/ViewCenter";
-import ViewRow from "../shared/ViewRow";
+import PrimaryButton from "../PrimaryButton";
 import { COLORS } from "../../constants/colors";
+import { AddUserIcon } from "../../constants/icons";
+import ViewCenter from "../layout/ViewCenter";
+import ViewRow from "../layout/ViewRow";
 
 type Props = {
   navigationRef: any;
@@ -34,6 +35,8 @@ const TopBar: FC<Props> = ({ navigationRef }) => {
           isRounded
           size="small"
           textColor={COLORS.black}
+          fontWeight={500}
+          icon={<AddUserIcon color={COLORS.black} />}
         />
       </ViewRow>
     </ViewCenter>

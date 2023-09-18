@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
-import { StyleSheet, View, TextProps, TextStyle } from "react-native";
+import { StyleSheet, View, TextStyle, ViewProps } from "react-native";
 
-type Props = TextProps & {
+type Props = ViewProps & {
   children: ReactNode;
   isRow?: boolean;
   style?: TextStyle | TextStyle[];

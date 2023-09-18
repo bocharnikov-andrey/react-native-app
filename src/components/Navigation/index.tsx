@@ -4,13 +4,14 @@ import { FC, useRef } from "react";
 import { Image, Text, View } from "react-native";
 import TopBar from "../TopBar";
 import { COLORS } from "../../constants/colors";
-import Portfolio from "../../screens/Portfolio/Portfolio";
-import Nemes from "../../screens/Nemes/Nemes";
-import Stocks from "../../screens/Stocks/Stocks";
+import Portfolio from "../../screens/Portfolio";
+import Nemes from "../../screens/Nemes";
+import Stocks from "../../screens/Stocks";
+import { NavigationPath, RootStackParamList } from "../../types/navigation";
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
-const PATHS = [
+const PATHS: NavigationPath[] = [
   { id: 1, name: "Portfolio", component: Portfolio },
   { id: 2, name: "Nemes", component: Nemes },
   { id: 3, name: "Stocks", component: Stocks },
@@ -37,6 +38,7 @@ const Navigation: FC = () => {
           <Tab.Screen
             key={p.id}
             name={p.name}
+            initialParams={{ filter: "All" }}
             component={p.component}
             options={{
               tabBarIcon: ({ focused }) => (
@@ -46,7 +48,7 @@ const Navigation: FC = () => {
                     source={require("../../../assets/images/favicon.png")}
                   />
                   <Text
-                    style={{ fontSize: 12, color: focused ? COLORS.white : COLORS.whiteOpacity }}
+                    style={{ fontSize: 12, color: focused ? COLORS.white : COLORS.whiteOpacity_40 }}
                   >
                     {p.name}
                   </Text>

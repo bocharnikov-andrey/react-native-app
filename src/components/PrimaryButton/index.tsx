@@ -1,9 +1,7 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { TouchableHighlight, View, TouchableHighlightProps } from "react-native";
 import { styles } from "./styles";
 import PrimaryText from "../PrimaryText";
-import { COLORS } from "../../../constants/colors";
-import { AddUserIcon } from "../../../constants/icons";
 
 export type Props = TouchableHighlightProps & {
   title: string;
@@ -12,8 +10,10 @@ export type Props = TouchableHighlightProps & {
   backgroundColor?: string;
   textColor?: string;
   fontWeight?: number;
+  fontSize?: number;
   longPressHandler?: () => void;
   isRounded?: boolean;
+  icon?: ReactNode;
 };
 
 const PrimaryButton: FC<Props> = (props) => {
@@ -41,12 +41,19 @@ const PrimaryButton: FC<Props> = (props) => {
   };
 
   return (
-    <TouchableHighlight onPress={props.pressHandler} onLongPress={onLongPressHandler} {...props}>
+    <TouchableHighlight
+      onPress={props.pressHandler}
+      onLongPress={onLongPressHandler}
+      {...props}
+      style={{ minWidth: 64 }}
+    >
       <View style={[style.container, buttonSizeClassname]}>
-        <View style={style.iconContainer}>
-          <AddUserIcon color={COLORS.black} />
-        </View>
-        <PrimaryText textColor={props.textColor} fontWeight={props.fontWeight}>
+        {props.icon && <View style={style.iconContainer}>{props.icon}</View>}
+        <PrimaryText
+          textColor={props.textColor}
+          fontWeight={props.fontWeight}
+          fontSize={props.fontSize}
+        >
           {props.title}
         </PrimaryText>
       </View>

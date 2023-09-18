@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../../constants/colors";
+import { COLORS } from "../../constants/colors";
 
 type Props = {
   size?: "small" | "medium" | "large";
@@ -14,9 +14,10 @@ export const styles = (props: Props) =>
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
+      minWidth: 96,
       paddingHorizontal: 16,
       backgroundColor: props.backgroundColor || COLORS.green,
-      borderRadius: props.isRounded ? 16 : 0,
+      borderRadius: props.isRounded ? 16 : 4,
     },
     iconContainer: {
       marginRight: 4,
