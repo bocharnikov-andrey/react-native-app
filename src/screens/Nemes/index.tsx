@@ -9,6 +9,7 @@ import { useSearch } from "../../hooks/useSearch";
 import { FILTERS } from "../../components/Filters/helpers";
 import PrimaryText from "../../components/PrimaryText";
 import { padding } from "../../mixins";
+import Modules from "./components/Modules";
 
 const NemesPageContainer: FC = () => {
   return (
@@ -34,6 +35,7 @@ const Nemes: FC = () => {
       <View style={styles.filtersWrapper}>
         <Filters filter={filter} setFilter={setFilter} filtersList={FILTERS} />
       </View>
+      <Modules/>
     </PageContainer>
   );
 };
