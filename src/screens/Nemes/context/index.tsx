@@ -1,6 +1,6 @@
 import React, { createContext, FC, useContext, useMemo, useState } from "react";
 import { NemesContextType, NemesProviderProps } from "./types";
-import { NemeCategory } from "../../../types/nemes";
+import { FilterItem } from "../../../types/filters";
 
 const NemesContext = createContext<NemesContextType | null>(null);
 
@@ -15,7 +15,7 @@ export const useNemesPage = () => {
 };
 
 const NemesProvider: FC<NemesProviderProps> = ({ children }) => {
-  const [filter, setFilter] = useState<NemeCategory>("All");
+  const [filter, setFilter] = useState<FilterItem>("All");
 
   // const getFilteredNemes = (value: string) => {
   const getFilteredNemes = (value: string) => {

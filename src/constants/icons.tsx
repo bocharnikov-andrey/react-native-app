@@ -91,6 +91,17 @@ export const RightArrowIcon: FC<Icon> = ({ color = COLORS.white }) => {
   );
 };
 
+export const RightAngleIcon: FC<Icon> = ({ color = COLORS.white }) => {
+  return (
+    <Svg width="14" height="14" viewBox="0 0 8 14" fill="none">
+      <Path
+        d="M0.0766602 12.4866L1.25666 13.6666L7.92333 6.99998L1.25666 0.333313L0.0766602 1.51331L5.56333 6.99998L0.0766602 12.4866Z"
+        fill={color}
+      />
+    </Svg>
+  );
+};
+
 export const StarIcon: FC<Icon> = ({ color = COLORS.white }) => {
   return (
     <Svg width="20" height="20" viewBox="0 0 16 16" fill="none">

@@ -1,20 +1,22 @@
 import { FC } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet } from "react-native";
+import PageContainer from "../../components/layout/PageContainer";
+import StockList from "./components/StocksList";
+import { STOCKS } from "./helpers";
+import Header from "./components/Header";
 
 const Stocks: FC = () => {
   return (
-    <View style={styles.container}>
-      <Text style={{ color: "#fff" }}>Stocks</Text>
-    </View>
+    <PageContainer style={styles.container} stickyHeaderIndices={[0]}>
+      <Header />
+      <StockList stocks={STOCKS} />
+    </PageContainer>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#000",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#fff",
   },
 });
 

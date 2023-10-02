@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../../../../constants/colors";
-import { border, center } from "../../../../../mixins";
+import { COLORS } from "../../../constants/colors";
+import { border, center } from "../../../mixins";
 
 type StylesProps = {
   isActive: boolean;

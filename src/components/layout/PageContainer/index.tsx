@@ -4,6 +4,7 @@ import Footer from "../../Footer";
 
 type Props = ViewProps & {
   children: ReactNode;
+  stickyHeaderIndices?: number[];
   hideFooter?: boolean;
 };
 
@@ -15,7 +16,7 @@ const PageContainer: FC<Props> = (props) => {
       style={[{ ...passedStyles }, styles.container]}
       {...props}
       showsVerticalScrollIndicator={false}
-      stickyHeaderIndices={[2]}
+      stickyHeaderIndices={props.stickyHeaderIndices}
     >
       {props.children}
       {!props.hideFooter && <Footer />}

@@ -1,8 +1,9 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
+import { FilterItem } from "../../../types/filters";
 
 export type NemesContextType = {
-  filter: string;
-  setFilter: Dispatch<SetStateAction<any>>;
+  filter: FilterItem;
+  setFilter: Dispatch<SetStateAction<FilterItem>>;
   getFilteredNemes: (value: string) => void;
 };
 

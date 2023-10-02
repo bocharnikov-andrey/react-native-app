@@ -176,5 +176,9 @@ dependencies {
     }
 }
 
+project.ext.react = [
+    enableHermes: true // Make sure this matches your app.json configuration
+]
+
 apply from: new File(["node", "--print", "require.resolve('@react-native-community/cli-platform-android/package.json')"].execute(null, rootDir).text.trim(), "../native_modules.gradle");
 applyNativeModulesAppBuildGradle(project)

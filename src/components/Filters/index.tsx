@@ -1,19 +1,24 @@
-import { FC, useRef } from "react";
-import { FlatList, View } from "react-native";
+import { Dispatch, FC, SetStateAction, useRef } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
 import Item from "./Item";
 import { FILTERS } from "./helpers";
-import { useNemesPage } from "../../context";
+import { FilterItemList, FilterItem } from "../../types/filters";
 
-const Filters: FC = () => {
+type Props = {
+  filter: FilterItem;
+  setFilter: Dispatch<SetStateAction<FilterItem>>;
+  filtersList: FilterItemList;
+};
+
+const Filters: FC<Props> = ({ filter, setFilter, filtersList }) => {
   const flatListRef = useRef<any>(null);
-  const { filter, setFilter } = useNemesPage();
 
-  const selectFilter = (index: number, filterName?: string) => {
+  const selectFilter = (index: number, filterName: FilterItem) => {
     flatListRef.current?.scrollToIndex({ animated: true, index, viewPosition: 0.5 });
     setFilter(filterName);
   };
 
-  const renderItem = (item: string, index: number) => {
+  const renderItem = (item: FilterItem, index: number) => {
     const isActive = filter === item;
     const isFirstElement = index === 0;
     const isLastElement = index === FILTERS.length - 1;
@@ -30,10 +35,10 @@ const Filters: FC = () => {
   };
 
   return (
-    <View style={{ marginHorizontal: -16 }}>
+    <View style={styles.container}>
       <FlatList
         ref={flatListRef}
-        data={FILTERS}
+        data={filtersList}
         renderItem={({ item, index }) => renderItem(item, index)}
         keyExtractor={(item) => item}
         contentContainerStyle={{ columnGap: 8 }}
@@ -43,5 +48,12 @@ const Filters: FC = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingVertical: 16,
+    marginHorizontal: -16,
+  },
+});
 
 export default Filters;

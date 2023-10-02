@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { FlatList, StyleSheet } from "react-native";
-import { Nemes } from "../../types/opportunities";
-import NemeItem from "../NemeItem";
+import NemeCard from "../NemeCard";
+import { Neme } from "../../types/nemes";
 
 type Props = {
-  nemes: Nemes[];
+  nemes: Neme[];
   displayedNemesNumber?: number;
 };
 
@@ -17,9 +17,7 @@ const NemesList: FC<Props> = ({ nemes, displayedNemesNumber }) => {
   return (
     <FlatList
       data={nemesList}
-      renderItem={({ item }) => (
-        <NemeItem title={item.title} opportunitiesNumber={item.opportunitiesNumber} />
-      )}
+      renderItem={({ item }) => <NemeCard neme={item} />}
       keyExtractor={(item) => item.id}
       contentContainerStyle={styles.list}
       horizontal

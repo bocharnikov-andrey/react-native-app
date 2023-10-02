@@ -1,4 +1,4 @@
-import { NemeCategory } from "../../../../types/nemes";
+import { NemeCategory } from "../../types/nemes";
 
 export const FILTERS: NemeCategory[] = [
   "All",

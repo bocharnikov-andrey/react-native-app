@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { TouchableHighlight } from "react-native";
-import PrimaryText from "../../../../../components/PrimaryText";
 import { styles } from "./styles";
-import { COLORS } from "../../../../../constants/colors";
+import PrimaryText from "../../PrimaryText";
+import { COLORS } from "../../../constants/colors";
 
 type Props = {
   title: string;
