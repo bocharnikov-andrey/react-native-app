@@ -28,4 +28,6 @@ export const COLORS = {
   grey: "#747474",
   yellow: "yellow",
   red: "#D46B6A",
+  springGreenAle: "#7AF8AF",
+  rose: "#F9B2EC",
 };
