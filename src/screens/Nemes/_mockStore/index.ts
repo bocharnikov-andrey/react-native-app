@@ -1,6 +1,8 @@
-import { mediumTilesModule } from "./module";
+import { mediumTilesModule, smallTilesStackModule, smallTilesModule } from "./module";
 
 export const mockStore = {
-  module: mediumTilesModule,
+  // module: smallTilesStackModule,
+  module: smallTilesModule,
+  // module: mediumTilesModule,
   analystChangesAmount: 2,
 };

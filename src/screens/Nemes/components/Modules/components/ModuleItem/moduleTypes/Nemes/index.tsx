@@ -32,36 +32,31 @@ const NemesLayout: FC<Props> = ({ moduleRank }) => {
       moduleName={module.name}
       moduleRank={moduleRank}
     >
-      <ScrollView
-        contentContainerStyle={styles.scrollViewContainer}
-        horizontal
-      >
-        {module.themes.items.map((theme, index, arr) => {
-          const isFirst = index === 0;
-          const isLast = index === arr.length - 1;
-          const firstStyle = isFirst && styles.themeCardFirst;
-          const lastStyle = isLast && styles.themeCardLast;
+      {module.themes.items.map((theme, index, arr) => {
+        const isFirst = index === 0;
+        const isLast = index === arr.length - 1;
+        const firstStyle = isFirst && styles.themeCardFirst;
+        const lastStyle = isLast && styles.themeCardLast;
 
-          const style = firstStyle || lastStyle;
-          const isEmptyAnalystRatingsChange =
-            nemesStore.analystChangesAmount === 0 &&
-            theme?.template === ThemeTemplate.ANALYST_RATINGS_CHANGES_TEMPLATE;
+        const style = firstStyle || lastStyle;
+        const isEmptyAnalystRatingsChange =
+          nemesStore.analystChangesAmount === 0 &&
+          theme?.template === ThemeTemplate.ANALYST_RATINGS_CHANGES_TEMPLATE;
 
-          if (isEmptyAnalystRatingsChange) {
-            return null;
-          }
+        if (isEmptyAnalystRatingsChange) {
+          return null;
+        }
 
-          return (
-            <ThemeCard
-              key={theme?.id}
-              theme={theme}
-              rank={index + 1}
-              moduleRank={moduleRank}
-              style={style}
-            />
-          );
-        })}
-      </ScrollView>
+        return (
+          <ThemeCard
+            key={theme?.id}
+            theme={theme}
+            rank={index + 1}
+            moduleRank={moduleRank}
+            style={style}
+          />
+        );
+      })}
     </ModuleLayout>
   );
 };
@@ -72,10 +67,6 @@ const styles = StyleSheet.create({
   },
   themeCardLast: {
     marginRight: 16,
-  },
-  scrollViewContainer: {
-    flexDirection: "row",
-    gap: 16,
   },
 });
 

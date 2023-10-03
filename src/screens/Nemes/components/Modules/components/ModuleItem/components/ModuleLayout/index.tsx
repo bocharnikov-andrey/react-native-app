@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { ModuleLayoutTypes } from "../../../../../../../../types/module";
 
 type Props = {
@@ -28,6 +28,19 @@ const ModuleLayout: FC<Props> = (props) => {
   //     trackHorizontalScrollEventData()
   //   );
 
+  const hasHorizontalScroll = moduleLayout === ModuleLayoutTypes.MEDIUM_TILES ||
+    moduleLayout === ModuleLayoutTypes.SMALL_TILES;
+  if (hasHorizontalScroll) {
+    return (
+      <ScrollView
+        contentContainerStyle={styles.scrollViewContainer}
+        horizontal
+      >
+        { children }
+      </ScrollView>
+    );
+  }
+
   return (
     <View style={moduleLayout === ModuleLayoutTypes.SMALL_TILE_STACK && styles.smallTilesStackContainer}>
       { children }
@@ -36,11 +49,14 @@ const ModuleLayout: FC<Props> = (props) => {
 };
 
 const styles = StyleSheet.create({
+  scrollViewContainer: {
+    flexDirection: "row",
+    gap: 16,
+  },
   smallTilesStackContainer: {
-    // display: grid;
-    // grid-template-columns: repeat(2, 1fr);
-    // gap: 1rem;
-    // padding: 0 1rem;
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 16,
   },
 });
 
