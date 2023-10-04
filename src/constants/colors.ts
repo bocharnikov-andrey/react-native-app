@@ -29,6 +29,8 @@ export const COLORS = {
   grey: "#747474",
   yellow: "yellow",
   red: "#D46B6A",
-  springGreenAle: "#7AF8AF",
+  springGreenPale: "#7AF8AF",
+  springGreenLight: "#A7FCD2",
   rose: "#F9B2EC",
+  coral: "#D46B6A",
 };

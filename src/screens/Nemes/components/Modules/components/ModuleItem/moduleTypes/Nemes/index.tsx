@@ -23,7 +23,6 @@ const NemesLayout: FC<Props> = ({ moduleRank }) => {
   }
 
   if (module.layout === ModuleLayoutTypes.LARGE_TILE) {
-    return null;
     return <LargeTiles moduleRank={moduleRank} />;
   }
 

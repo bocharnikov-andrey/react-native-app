@@ -77,8 +77,8 @@ const styles = ({ isGreyVariant }: StylesProps) => StyleSheet.create({
     flexDirection: "column",
     backgroundColor: isGreyVariant ? COLORS.whiteOpacity_10 : "initial",
     rowGap: 16,
-    paddingTop: 24,
-    paddingBottom: 24,
+    paddingVertical: 24,
+    paddingHorizontal: 16,
   },
   seeAllLink: {
     textDecorationLine: "underline",

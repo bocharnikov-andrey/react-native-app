@@ -22,7 +22,7 @@ export const getDatapointLabel = (
 
 const getDatapointColor = (value: number): string => {
   if (value > 0) {
-    return COLORS.springGreenAle;
+    return COLORS.springGreenPale;
   }
   if (value < 0) {
     return COLORS.rose;

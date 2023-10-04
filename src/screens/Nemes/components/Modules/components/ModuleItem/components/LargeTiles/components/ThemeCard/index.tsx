@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Text, View, StyleSheet, ImageBackground, Image } from "react-native";
+import { View, StyleSheet, ImageBackground, Image, TouchableHighlight } from "react-native";
 import { ThemeLight } from "../../../../../../../../../../types/theme";
 import ViewRow from "../../../../../../../../../../components/layout/ViewRow";
 import PrimaryText from "../../../../../../../../../../components/PrimaryText";
@@ -9,6 +9,7 @@ import { COLORS } from "../../../../../../../../../../constants/colors";
 import PrimaryButton from "../../../../../../../../../../components/PrimaryButton";
 import { StockSymbolLight } from "../../../../../../../../../../types/symbol";
 import { aaplStockLight, msftStockLight, nvdaStockLight } from "../../../../../../../../_mockStore/stock";
+import StockGrid from "../../../../../../../../../../components/Stocks/StockGrid";
 
 type Props = {
   theme: ThemeLight;
@@ -80,67 +81,72 @@ const ThemeCard: FC<Props> = ({ theme, moduleName, moduleRank }) => {
   };
 
   return (
-    <>
-      <View style={styles.container}>
-        <ImageBackground
-          source={{ uri: theme.picture }}
-          resizeMode="cover"
-        >
-          <ViewRow jc="flex-end" style={styles.favouriteButtonContainer}>
-            <Image
-              style={{ width: 20, height: 20 }}
-              source={require("../../../../../../../../../../../assets/images/favicon.png")}
-            />
-          </ViewRow>
-          <View style={styles.headerContainer}>
-            <PrimaryText
-              fontWeight={700}
-              fontSize={24}
-            >
-              { theme.name }
-            </PrimaryText>
-            <StocksBadge stocks={themeStockLength} withBackground="white"/>
-          </View>
-        </ImageBackground>
-        <ViewRow ai="center" style={styles.stocksContainer}>
-          {renderSymbols()}
-          {/*{initializing && skeleton}*/}
-          {!initializing && symbols.map((symbol) => (
-            <StyledStockGrid
-              stock={symbol}
-              key={symbol.id}
-              moduleName={moduleName}
-              moduleRank={moduleRank}
-            />
-          ))}
-        </ViewRow>
-        <View style={styles.viewAllContainer}>
-          <PrimaryButton
-            title="View all"
-            backgroundColor={COLORS.lightBlue}
-            size="large"
-            fontWeight={500}
-            fontSize={16}
-            pressHandler={handleViewAllClick}
+    <TouchableHighlight onPress={handleViewAllClick}>
+      <ImageBackground
+        source={{ uri: theme.picture }}
+        resizeMode="cover"
+        style={styles.imageBgContainer}
+        imageStyle={styles.imageBgImage}
+      >
+        <ViewRow jc="flex-end" style={styles.favouriteButtonContainer}>
+          <Image
+            style={{ width: 20, height: 20 }}
+            source={require("../../../../../../../../../../../assets/images/favicon.png")}
           />
+        </ViewRow>
+        <View style={styles.headerContainer}>
+          <PrimaryText
+            fontWeight={700}
+            fontSize={24}
+            style={styles.themeNameText}
+          >
+            { theme.name }
+          </PrimaryText>
+          <StocksBadge stocks={themeStockLength} withBackground="white"/>
         </View>
-      </View>
-    </>
+        <View style={styles.contentContainer}>
+          <ViewRow ai="center" style={styles.stocksContainer}>
+            {/*{initializing && skeleton}*/}
+            {!initializing && symbols.map((symbol) => (
+              <StockGrid
+                stock={symbol}
+                key={symbol.id}
+                moduleName={moduleName}
+                moduleRank={moduleRank}
+              />
+            ))}
+          </ViewRow>
+          <View style={styles.viewAllContainer}>
+            <PrimaryButton
+              title="View all"
+              backgroundColor={COLORS.lightBlue}
+              size="large"
+              fontWeight={500}
+              fontSize={16}
+              pressHandler={handleViewAllClick}
+            />
+          </View>
+        </View>
+      </ImageBackground>
+    </TouchableHighlight>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  contentContainer: {
+    marginTop: 225,
+  },
+  imageBgContainer: {
     alignItems: "center",
-    height: 314,
     margin: 16,
-    borderRadius: 16,
-    paddingVertical: 4,
-    paddingHorizontal: 12,
 
-    //   background: ${(props) =>
-    //     `linear-gradient(180deg, ${COLOR_BLACK_70} 0%, rgba(0, 0, 0, 0) 100%), url(${props.source}) no-repeat`};
-    //   background-size: cover;
+    // //   background: ${(props) =>
+    //     //     `linear-gradient(180deg, ${COLOR_BLACK_70} 0%, rgba(0, 0, 0, 0) 100%), url(${props.source}) no-repeat`};
+    //     //   background-size: cover;
+  },
+  imageBgImage: {
+    borderRadius: 16,
+    height: 314,
   },
   favouriteButtonContainer: {
     width: "100%",
@@ -148,13 +154,15 @@ const styles = StyleSheet.create({
   headerContainer: {
     gap: 8,
   },
+  themeNameText: {
+    textAlign: "center",
+  },
   viewAllContainer: {
-    marginVertical: 16,
-    marginHorizontal: 32,
+    margin: 16,
   },
   stocksContainer: {
-    marginTop: -116,
-    marginHorizontal: 32,
+    marginTop: -90,
+    marginHorizontal: 16,
     marginBottom: 0,
     gap: 8,
   },

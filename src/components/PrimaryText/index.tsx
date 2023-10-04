@@ -3,7 +3,7 @@ import { StyleProp, StyleSheet, Text, TextProps, TextStyle } from "react-native"
 import { COLORS } from "../../constants/colors";
 import { FONTS } from "../../constants/fonts";
 
-type Props = TextProps & {
+export type Props = TextProps & {
   textColor?: string;
   fontSize?: number;
   fontWeight?: number;
