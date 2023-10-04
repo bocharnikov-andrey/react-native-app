@@ -1,9 +1,8 @@
 import { FC, useCallback } from "react";
-import { StyleSheet, useWindowDimensions } from "react-native";
-import take from "lodash.take";
-import { mockStore } from "../../../../../../_mockStore";
-import ThemeCard from "./components/ThemeCard";
+import { Text, View, StyleSheet, useWindowDimensions } from "react-native";
 import Slider from "../../../../../../../../components/Slider";
+import { mockStore } from "../../../../../../_mockStore";
+import take from "lodash.take";
 import { CONTAINER_HORIZONTAL_PADDING } from "../../index";
 import { ThemeLight } from "../../../../../../../../types/theme";
 
@@ -11,7 +10,7 @@ type Props = {
   moduleRank: number;
 };
 
-const LargeTiles: FC<Props> = ({ moduleRank }) => {
+const LargeFeatureCarousel: FC<Props> = ({ moduleRank }) => {
   const { module } = mockStore;
   const visibleThemes = take(module.themes.items, 5);
   const { width } = useWindowDimensions();
@@ -52,4 +51,8 @@ const LargeTiles: FC<Props> = ({ moduleRank }) => {
   );
 };
 
-export default LargeTiles;
+const styles = StyleSheet.create({
+  container: {},
+});
+
+export default LargeFeatureCarousel;

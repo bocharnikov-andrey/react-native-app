@@ -11,6 +11,8 @@ type Props = {
   rank: number;
 };
 
+export const CONTAINER_HORIZONTAL_PADDING = 16;
+
 const ModuleItem: FC<Props> = ({ module, rank }) => {
   const { name, themes, layout, id, type, markets = [], content } = module;
 
@@ -78,7 +80,7 @@ const styles = ({ isGreyVariant }: StylesProps) => StyleSheet.create({
     backgroundColor: isGreyVariant ? COLORS.whiteOpacity_10 : "initial",
     rowGap: 16,
     paddingVertical: 24,
-    paddingHorizontal: 16,
+    paddingHorizontal: CONTAINER_HORIZONTAL_PADDING,
   },
   seeAllLink: {
     textDecorationLine: "underline",

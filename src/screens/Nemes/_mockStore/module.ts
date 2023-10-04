@@ -60,3 +60,10 @@ export const largeTileModule: ModuleWithThemes = {
   name: "Large Tile Module",
   layout: ModuleLayoutTypes.LARGE_TILE,
 };
+
+export const largeFeatureCarouselModule: ModuleWithThemes = {
+  ...commonModule,
+  id: "5",
+  name: "Large FC Module",
+  layout: ModuleLayoutTypes.LARGE_FEATURE_CAROUSEL,
+};
