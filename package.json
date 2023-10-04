@@ -22,6 +22,7 @@
     "firebase": "9.19.1",
     "lodash.debounce": "^4.0.8",
     "lodash.isempty": "^4.4.0",
+    "lodash.take": "^4.1.1",
     "pluralize": "^8.0.0",
     "react": "18.2.0",
     "react-native": "0.72.4",

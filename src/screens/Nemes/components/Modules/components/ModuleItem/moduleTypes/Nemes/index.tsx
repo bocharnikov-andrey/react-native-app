@@ -5,6 +5,7 @@ import { ThemeTemplate } from "../../../../../../../../types/theme";
 import ModuleLayout from "../../components/ModuleLayout";
 import { mockStore } from "../../../../../../_mockStore";
 import ThemeCard from "../../components/ThemeCard";
+import LargeTiles from "../../components/LargeTiles";
 
 type Props = {
   moduleRank: number;
@@ -23,7 +24,7 @@ const NemesLayout: FC<Props> = ({ moduleRank }) => {
 
   if (module.layout === ModuleLayoutTypes.LARGE_TILE) {
     return null;
-    // return <LargeTiles moduleRank={moduleRank} />;
+    return <LargeTiles moduleRank={moduleRank} />;
   }
 
   return (

@@ -53,3 +53,10 @@ export const smallTilesModule: ModuleWithThemes = {
   name: "Small Tiles Module",
   layout: ModuleLayoutTypes.SMALL_TILES,
 };
+
+export const largeTileModule: ModuleWithThemes = {
+  ...commonModule,
+  id: "4",
+  name: "Large Tile Module",
+  layout: ModuleLayoutTypes.LARGE_TILE,
+};

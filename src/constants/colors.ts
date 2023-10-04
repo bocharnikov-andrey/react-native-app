@@ -18,6 +18,7 @@ export const COLORS = {
   blackOpacity_20: BLACK_OPACITY(0.2),
   blackOpacity_40: BLACK_OPACITY(0.4),
   blackOpacity_60: BLACK_OPACITY(0.6),
+  blackOpacity_70: BLACK_OPACITY(0.7),
   blackOpacity_80: BLACK_OPACITY(0.8),
   green: "#00FF90",
   darkGreen: "#468B89",
