@@ -66,19 +66,6 @@ export enum ModuleContentTypes {
   automatedNotifications = "automatedNotifications",
 }
 
-export enum ModuleTendencyDatapointTypes {
-  POSITIVE_AND_NEGATIVE_AVERAGE_DATAPOINTS = "positiveAndNegativeAverageDatapoints",
-  POSITIVE_AVERAGE_DATAPOINT = "positiveAverageDatapoints",
-  NEGATIVE_AVERAGE_DATAPOINT = "negativeAverageDatapoints",
-}
-
-export enum ModuleFeaturedAverageDatapointTypes {
-  AVG_PRICE_CHANGE_1_DAY = "avgPriceChangePast1Day",
-  AVG_PRICE_CHANGE_1_WEEK = "avgPriceChangePast1Week",
-  AVG_PRICE_CHANGE_1_MONTH = "avgPriceChangePast1Month",
-  AVG_MARKET_CAP = "avgMarketCap",
-}
-
 export enum ModuleFeaturedAverageDatapointTypes {
   AVG_PRICE_CHANGE_1_DAY = "avgPriceChangePast1Day",
   AVG_PRICE_CHANGE_1_WEEK = "avgPriceChangePast1Week",

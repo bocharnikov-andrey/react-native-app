@@ -1,0 +1,1 @@
+export const CONTAINER_HORIZONTAL_PADDING = 8;
