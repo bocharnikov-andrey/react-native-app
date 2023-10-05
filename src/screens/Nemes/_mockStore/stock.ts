@@ -50,3 +50,19 @@ export const msftStockLight: StockSymbolLight = {
   name: "MSFT",
   picture: "https://firebasestorage.googleapis.com/v0/b/nemo-trunk.appspot.com/o/symbols%2FMSFT_small?alt=media"
 };
+
+export const test4StockLight: StockSymbolLight = {
+  ...baseStockSymbolLight,
+  id: "4",
+  label: "ABB Ltd.",
+  name: "ABB",
+  picture: "https://firebasestorage.googleapis.com/v0/b/nemo-trunk.appspot.com/o/symbols%2FABB_small?alt=media"
+};
+
+export const test5StockLight: StockSymbolLight = {
+  ...baseStockSymbolLight,
+  id: "5",
+  label: "Bank of America with very long name",
+  name: "BAA",
+  picture: "https://firebasestorage.googleapis.com/v0/b/nemo-trunk.appspot.com/o/symbols%2FBAC_small?alt=media"
+};

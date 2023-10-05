@@ -1,7 +1,23 @@
-import { FC } from "react";
-import { Text, View, StyleSheet, TouchableHighlight, ImageBackground, Image } from "react-native";
+import { FC, useEffect, useState } from "react";
+import { View, StyleSheet, TouchableHighlight, ImageBackground, Image } from "react-native";
 import { ThemeLight } from "../../../../../../../../../../types/theme";
 import ViewRow from "../../../../../../../../../../components/layout/ViewRow";
+import PrimaryText from "../../../../../../../../../../components/PrimaryText";
+import StocksBadge from "../../../../../../../../../../components/Theme/StocksBadge";
+import { mockStore } from "../../../../../../../../_mockStore";
+import { getStocksCount } from "../../../../../../../../../../utils/getStocksCount";
+import { COLORS } from "../../../../../../../../../../constants/colors";
+import RichText from "../../../../../../../../../../components/RichText";
+import PrimaryButton from "../../../../../../../../../../components/PrimaryButton";
+import { StockSymbolLight } from "../../../../../../../../../../types/symbol";
+import {
+  aaplStockLight,
+  msftStockLight,
+  nvdaStockLight,
+  test4StockLight,
+  test5StockLight
+} from "../../../../../../../../_mockStore/stock";
+import StockItem from "./components/StockItem";
 
 type Props = {
   theme: ThemeLight;
@@ -55,12 +71,32 @@ const ThemeCard: FC<Props> = ({ theme, moduleName, moduleRank }) => {
   //     });
   //   };
 
-  const handleViewAllClick = () => {
-    console.log("View all clicked");
+  const { analystChangesAmount } = mockStore;
+  const { name, stockSymbols, template, shortDescription } = theme;
+  const [initializing, setInitializing] = useState(true);
+  const [symbols, setSymbols] = useState<StockSymbolLight[]>([]);
+
+  useEffect(() => {
+    setSymbols([
+      aaplStockLight,
+      nvdaStockLight,
+      msftStockLight,
+      test4StockLight,
+      test5StockLight,
+    ]);
+    setInitializing(false);
+  }, []);
+
+  const handleViewMoreClick = () => {
+    console.log("View more clicked");
+  };
+
+  const handleStockClick = (symbol: StockSymbolLight) => {
+    console.log("Stock clicked", symbol.id);
   };
 
   return (
-    <TouchableHighlight onPress={handleViewAllClick}>
+    <TouchableHighlight onPress={handleViewMoreClick}>
       <ImageBackground
         source={{ uri: theme.picture }}
         resizeMode="cover"
@@ -68,52 +104,58 @@ const ThemeCard: FC<Props> = ({ theme, moduleName, moduleRank }) => {
         imageStyle={styles.imageBgImage}
       >
         <View style={styles.container}>
-          <ViewRow style={styles.favouriteButtonContainer}>
+          <ViewRow jc="flex-end" style={styles.favouriteButtonContainer}>
             <Image
               style={{ width: 20, height: 20 }}
               source={require("../../../../../../../../../../../assets/images/favicon.png")}
             />
           </ViewRow>
-          {/* todo */}
+          <View style={styles.contentContainer}>
+            <View style={styles.header}>
+              <PrimaryText
+                fontWeight={700}
+                fontSize={24}
+              >
+                {name}
+              </PrimaryText>
+              <StocksBadge
+                withBackground="black"
+                stocks={getStocksCount(
+                  template,
+                  analystChangesAmount,
+                  stockSymbols.length
+                )}
+              />
+              <RichText content={shortDescription}/>
+            </View>
+            <View style={styles.footer}>
+              <View style={styles.stockList}>
+                {/*{initializing && skeleton}*/}
+                {!initializing && symbols.map((symbol, idx) => (
+                  <StockItem
+                    key={symbol.id}
+                    idx={idx}
+                    symbol={symbol}
+                    onPress={handleStockClick}
+                  />
+                ))}
+              </View>
+              {/*<GridGap gap=".75rem" gridAutoFlow="row" minWidth="100%">*/}
+              {/*  {renderSymbols()}*/}
+              {/*</GridGap>*/}
+              <PrimaryButton
+                title="View more"
+                backgroundColor={COLORS.lightBlue}
+                size="large"
+                fontWeight={500}
+                fontSize={16}
+                pressHandler={handleViewMoreClick}
+              />
+            </View>
+          </View>
         </View>
       </ImageBackground>
     </TouchableHighlight>
-
-    <StyledThemeCard source={lazyImage.src} ref={lazyImage.ref}>
-      <Flex justifyContent="flex-end">
-        <FavoriteThemeButton
-          theme={theme}
-          style="dark-contained"
-          iconStyle="filled"
-        />
-      </Flex>
-      <StyledContent>
-        <FlexColumn gap=".5rem" justifyContent="flex-end">
-          <Typography variant="heading4Bold">{name}</Typography>
-          <StocksBadge
-            withBackground="black"
-            stocks={getStocksCount(
-              template,
-              nemesStore.analystChangesAmount,
-              stockSymbols.length
-            )}
-          />
-          <Typography variant="bodyLRegular">
-            <RichText content={shortDescription} />
-          </Typography>
-        </FlexColumn>
-        <FlexColumn gap=".75rem">
-          <GridGap gap=".75rem" gridAutoFlow="row" minWidth="100%">
-            {renderSymbols()}
-          </GridGap>
-          <PrimaryButton
-            title="View more"
-            style="blue"
-            onClick={goToThemeDetails}
-          />
-        </FlexColumn>
-      </StyledContent>
-    </StyledThemeCard>
   );
 };
 
@@ -123,7 +165,9 @@ const styles = StyleSheet.create({
   },
   imageBgContainer: {
     justifyContent: "space-between",
-    padding: 4,
+    height: "auto",
+    minHeight: 600,
+    marginBottom: 16,
 
     // height: "auto",
     // minHeight: 610,
@@ -134,16 +178,28 @@ const styles = StyleSheet.create({
     //   box-shadow: inset 0 0 0 2px ${COLOR_WHITE_20};
     //   background: ${(props) =>
     //     `linear-gradient(179.97deg, rgba(0, 0, 0, 0) 0.03%, #000000 68.07%), url(${props.source}) no-repeat`};
-    //   padding: 0.25rem;
   },
   imageBgImage: {
-    height: "auto",
-    minHeight: 610,
     borderRadius: 16,
   },
   favouriteButtonContainer: {
     width: "100%",
+  },
+  contentContainer: {
+    rowGap: 8,
+    padding: 16,
+    minHeight: 558,
     justifyContent: "flex-end",
+  },
+  header: {
+    gap: 8,
+    alignItems: "flex-start"
+  },
+  stockList: {
+    gap: 12,
+  },
+  footer: {
+    gap: 12,
   },
 });
 

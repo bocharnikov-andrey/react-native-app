@@ -88,45 +88,43 @@ const ThemeCard: FC<Props> = ({ theme, moduleName, moduleRank }) => {
         style={styles.imageBgContainer}
         imageStyle={styles.imageBgImage}
       >
-        <View style={styles.container}>
-          <ViewRow style={styles.favouriteButtonContainer}>
-            <Image
-              style={{ width: 20, height: 20 }}
-              source={require("../../../../../../../../../../../assets/images/favicon.png")}
-            />
-          </ViewRow>
-          <View style={styles.headerContainer}>
-            <PrimaryText
-              fontWeight={700}
-              fontSize={24}
-              style={styles.themeNameText}
-            >
-              { theme.name }
-            </PrimaryText>
-            <StocksBadge stocks={themeStockLength} withBackground="white"/>
-          </View>
-          <View style={styles.contentContainer}>
-            <ViewRow ai="center" style={styles.stocksContainer}>
-              {/*{initializing && skeleton}*/}
-              {!initializing && symbols.map((symbol) => (
-                <StockGrid
-                  stock={symbol}
-                  key={symbol.id}
-                  moduleName={moduleName}
-                  moduleRank={moduleRank}
-                />
-              ))}
-            </ViewRow>
-            <View style={styles.viewAllContainer}>
-              <PrimaryButton
-                title="View all"
-                backgroundColor={COLORS.lightBlue}
-                size="large"
-                fontWeight={500}
-                fontSize={16}
-                pressHandler={handleViewAllClick}
+        <ViewRow jc="flex-end" style={styles.favouriteButtonContainer}>
+          <Image
+            style={{ width: 20, height: 20 }}
+            source={require("../../../../../../../../../../../assets/images/favicon.png")}
+          />
+        </ViewRow>
+        <View style={styles.headerContainer}>
+          <PrimaryText
+            fontWeight={700}
+            fontSize={24}
+            style={styles.themeNameText}
+          >
+            { theme.name }
+          </PrimaryText>
+          <StocksBadge stocks={themeStockLength} withBackground="white"/>
+        </View>
+        <View style={styles.contentContainer}>
+          <ViewRow ai="center" style={styles.stocksContainer}>
+            {/*{initializing && skeleton}*/}
+            {!initializing && symbols.map((symbol) => (
+              <StockGrid
+                stock={symbol}
+                key={symbol.id}
+                moduleName={moduleName}
+                moduleRank={moduleRank}
               />
-            </View>
+            ))}
+          </ViewRow>
+          <View style={styles.viewAllContainer}>
+            <PrimaryButton
+              title="View all"
+              backgroundColor={COLORS.lightBlue}
+              size="large"
+              fontWeight={500}
+              fontSize={16}
+              pressHandler={handleViewAllClick}
+            />
           </View>
         </View>
       </ImageBackground>
@@ -135,11 +133,11 @@ const ThemeCard: FC<Props> = ({ theme, moduleName, moduleRank }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-  },
   contentContainer: {
     marginTop: 225,
+  },
+  favouriteButtonContainer: {
+    width: "100%",
   },
   imageBgContainer: {
     alignItems: "center",
@@ -150,10 +148,6 @@ const styles = StyleSheet.create({
   imageBgImage: {
     borderRadius: 16,
     height: 314,
-  },
-  favouriteButtonContainer: {
-    width: "100%",
-    justifyContent: "flex-end",
   },
   headerContainer: {
     gap: 8,

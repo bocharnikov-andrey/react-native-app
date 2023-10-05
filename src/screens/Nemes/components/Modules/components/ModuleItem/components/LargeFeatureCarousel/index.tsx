@@ -3,8 +3,9 @@ import { Text, View, StyleSheet, useWindowDimensions } from "react-native";
 import Slider from "../../../../../../../../components/Slider";
 import { mockStore } from "../../../../../../_mockStore";
 import take from "lodash.take";
-import { CONTAINER_HORIZONTAL_PADDING } from "../../index";
+import { CONTAINER_HORIZONTAL_PADDING } from "../../utils";
 import { ThemeLight } from "../../../../../../../../types/theme";
+import ThemeCard from "./components/ThemeCard";
 
 type Props = {
   moduleRank: number;
@@ -42,17 +43,19 @@ const LargeFeatureCarousel: FC<Props> = ({ moduleRank }) => {
 
   return (
     <Slider
+      style={styles.slider}
       data={visibleThemes}
       renderItem={renderItem}
       onSlideChange={handleSlideChange}
-      sliderWidth={width - CONTAINER_HORIZONTAL_PADDING * 2}
       itemWidth={width - CONTAINER_HORIZONTAL_PADDING * 2}
     />
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  slider: {
+    marginHorizontal: -CONTAINER_HORIZONTAL_PADDING,
+  }
 });
 
 export default LargeFeatureCarousel;

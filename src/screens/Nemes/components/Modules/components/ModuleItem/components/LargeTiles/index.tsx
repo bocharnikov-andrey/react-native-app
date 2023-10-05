@@ -4,7 +4,7 @@ import take from "lodash.take";
 import { mockStore } from "../../../../../../_mockStore";
 import ThemeCard from "./components/ThemeCard";
 import Slider from "../../../../../../../../components/Slider";
-import { CONTAINER_HORIZONTAL_PADDING } from "../../index";
+import { CONTAINER_HORIZONTAL_PADDING } from "../../utils";
 import { ThemeLight } from "../../../../../../../../types/theme";
 
 type Props = {
@@ -43,13 +43,19 @@ const LargeTiles: FC<Props> = ({ moduleRank }) => {
 
   return (
     <Slider
+      style={styles.slider}
       data={visibleThemes}
       renderItem={renderItem}
       onSlideChange={handleSlideChange}
-      sliderWidth={width - CONTAINER_HORIZONTAL_PADDING * 2}
       itemWidth={width - CONTAINER_HORIZONTAL_PADDING * 2}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  slider: {
+    marginHorizontal: -CONTAINER_HORIZONTAL_PADDING,
+  }
+});
 
 export default LargeTiles;

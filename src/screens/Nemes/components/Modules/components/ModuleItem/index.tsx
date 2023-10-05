@@ -5,13 +5,12 @@ import ModuleHeader from "./components/ModuleHeader";
 import PrimaryText from "../../../../../../components/PrimaryText";
 import { ModuleLayoutTypes, ModuleTypes, ModuleWithThemes } from "../../../../../../types/module";
 import NemesLayout from "./moduleTypes/Nemes";
+import { CONTAINER_HORIZONTAL_PADDING } from "./utils";
 
 type Props = {
   module: ModuleWithThemes;
   rank: number;
 };
-
-export const CONTAINER_HORIZONTAL_PADDING = 16;
 
 const ModuleItem: FC<Props> = ({ module, rank }) => {
   const { name, themes, layout, id, type, markets = [], content } = module;
