@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import ModuleItem from "./components/ModuleItem";
 import { mockStore } from "../../_mockStore";
 

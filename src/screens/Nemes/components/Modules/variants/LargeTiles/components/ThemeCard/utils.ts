@@ -1,4 +1,4 @@
-import { ThemeLight, ThemeTemplate } from "../../../../../../../../../../types/theme";
+import { ThemeLight, ThemeTemplate } from "types/theme";
 
 export const getThemeStockLength = (theme: ThemeLight): number => {
   switch (theme.template) {

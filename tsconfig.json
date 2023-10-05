@@ -20,7 +20,13 @@
     "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "components/*": ["./src/components/*"],
+      "types/*": ["./src/types/*"],
+      "constants/*": ["./src/constants/*"],
+      "utils/*": ["./src/utils/*"]
+    }
   },
   "include": [
     "src"
