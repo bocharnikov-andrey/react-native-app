@@ -12,6 +12,7 @@ import { COLORS } from "constants/colors";
 import { aaplStockLight, msftStockLight, nvdaStockLight } from "../../../../../../_mockStore/stock";
 import { getThemeStockLength } from "./utils";
 import { styles } from "./styles";
+import ViewCenter from "../../../../../../../../components/layout/ViewCenter";
 
 type Props = {
   theme: ThemeLight;
@@ -44,7 +45,8 @@ const ThemeCard: FC<Props> = ({ theme, moduleName, moduleRank }) => {
           colors={['rgba(0, 0, 0, 0.7)', 'rgba(0, 0, 0, 0)']}
           locations={[0, 1]}
           style={styles.linearGradient}
-        >
+        />
+        <ViewCenter>
           <ViewRow jc="flex-end" style={styles.favouriteButtonContainer}>
             <Image
               style={{ width: 20, height: 20 }}
@@ -84,7 +86,7 @@ const ThemeCard: FC<Props> = ({ theme, moduleName, moduleRank }) => {
               />
             </View>
           </View>
-        </LinearGradient>
+        </ViewCenter>
       </ImageBackground>
     </TouchableHighlight>
   );

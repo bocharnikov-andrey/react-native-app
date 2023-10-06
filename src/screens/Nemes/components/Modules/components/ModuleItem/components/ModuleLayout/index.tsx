@@ -18,8 +18,8 @@ const ModuleLayout: FC<Props> = (props) => {
   if (hasHorizontalScroll) {
     return (
       <ScrollView
-        contentContainerStyle={styles.scrollViewContainer}
         horizontal
+        contentContainerStyle={styles.scrollViewContainer}
       >
         { children }
       </ScrollView>

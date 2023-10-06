@@ -4,8 +4,8 @@ import { ThemeTemplate } from "types/theme";
 import ModuleLayout from "../../components/ModuleLayout";
 import { mockStore } from "../../../../../../_mockStore";
 import ThemeCard from "../../components/ThemeCard";
-import LargeTiles from "../../../../variants/LargeTiles";
-import LargeFeatureCarousel from "../../../../variants/LargeFeatureCarousel";
+import ThemesLargeTiles from "../../../../variants/ThemesLargeTiles";
+import ThemesLargeFeatureCarousel from "../../../../variants/ThemesLargeFeatureCarousel";
 
 type Props = {
   moduleRank: number;
@@ -18,11 +18,11 @@ const NemesLayout: FC<Props> = ({ moduleRank }) => {
   };
 
   if (module.layout === ModuleLayoutTypes.LARGE_FEATURE_CAROUSEL) {
-    return <LargeFeatureCarousel moduleRank={moduleRank} />;
+    return <ThemesLargeFeatureCarousel moduleRank={moduleRank} />;
   }
 
   if (module.layout === ModuleLayoutTypes.LARGE_TILE) {
-    return <LargeTiles moduleRank={moduleRank} />;
+    return <ThemesLargeTiles moduleRank={moduleRank} />;
   }
 
   return (

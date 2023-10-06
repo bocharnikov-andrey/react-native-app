@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { CONTAINER_HORIZONTAL_PADDING } from "../../../../../../utils";
 
 export const styles = StyleSheet.create({
   scrollViewContainer: {
@@ -9,5 +10,6 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 16,
+    marginHorizontal: CONTAINER_HORIZONTAL_PADDING,
   },
 });

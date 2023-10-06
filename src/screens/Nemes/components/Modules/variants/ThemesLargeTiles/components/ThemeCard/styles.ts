@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
+import { CONTAINER_HORIZONTAL_PADDING } from "../../../../../../utils";
 
 export const styles = StyleSheet.create({
   cardTouchable: {
     borderRadius: 16,
+    marginLeft: CONTAINER_HORIZONTAL_PADDING,
   },
   contentContainer: {
     marginTop: 225,
@@ -13,6 +15,12 @@ export const styles = StyleSheet.create({
   linearGradient: {
     borderRadius: 16,
     alignItems: "center",
+    height: 314,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   imageBgImage: {
     borderRadius: 16,

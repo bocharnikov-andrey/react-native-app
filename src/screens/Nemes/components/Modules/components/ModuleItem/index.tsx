@@ -5,6 +5,7 @@ import ModuleHeader from "./components/ModuleHeader";
 import { ModuleLayoutTypes, ModuleTypes, ModuleWithThemes } from "types/module";
 import NemesLayout from "./moduleTypes/Nemes";
 import { styles } from "./styles";
+import MarketsLayout from "./moduleTypes/Markets";
 
 type Props = {
   module: ModuleWithThemes;
@@ -64,6 +65,7 @@ const ModuleItem: FC<Props> = ({ module, rank }) => {
         }
       />
       {type === ModuleTypes.nemeModule && <NemesLayout moduleRank={rank} />}
+      {type === ModuleTypes.marketModule && <MarketsLayout moduleRank={rank} />}
     </View>
   );
 };

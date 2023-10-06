@@ -1,9 +1,11 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "../../../../../../../../constants/colors";
+import { CONTAINER_HORIZONTAL_PADDING } from "../../../../../../utils";
 
 export const styles = StyleSheet.create({
   cardTouchable: {
     borderRadius: 16,
+    marginLeft: CONTAINER_HORIZONTAL_PADDING,
   },
   container: {
     width: "100%",

@@ -4,7 +4,7 @@ import take from "lodash.take";
 import Slider from "components/Slider";
 import { ThemeLight } from "types/theme";
 import { mockStore } from "../../../../_mockStore";
-import { CONTAINER_HORIZONTAL_PADDING } from "../../components/ModuleItem/utils";
+import { CONTAINER_HORIZONTAL_PADDING } from "../../../../utils";
 import ThemeCard from "./components/ThemeCard";
 import { styles } from "./styles";
 
@@ -12,7 +12,7 @@ type Props = {
   moduleRank: number;
 };
 
-const LargeFeatureCarousel: FC<Props> = ({ moduleRank }) => {
+const ThemesLargeTiles: FC<Props> = ({ moduleRank }) => {
   const { module } = mockStore;
   const visibleThemes = take(module.themes.items, 5);
   const { width } = useWindowDimensions();
@@ -43,4 +43,4 @@ const LargeFeatureCarousel: FC<Props> = ({ moduleRank }) => {
   );
 };
 
-export default LargeFeatureCarousel;
+export default ThemesLargeTiles;
