@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { StyleSheet } from "react-native";
+import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import pluralize from "pluralize";
 import ViewCenter from "../../layout/ViewCenter";
 import { COLORS } from "../../../constants/colors";
@@ -9,9 +9,10 @@ type Props = {
   stocks: number;
   hide?: boolean;
   withBackground?: "white" | "black";
+  style?: StyleProp<ViewStyle>;
 };
 
-const StocksBadge: FC<Props> = ({ stocks, hide, withBackground }) => {
+const StocksBadge: FC<Props> = ({ stocks, hide, withBackground, style }) => {
   const componentStyles = styles({ withBackground });
 
   if (hide) {
@@ -22,6 +23,7 @@ const StocksBadge: FC<Props> = ({ stocks, hide, withBackground }) => {
     <ViewCenter style={[
       componentStyles.container,
       withBackground && componentStyles.withBackgroundContainer,
+      style,
     ]}>
       <PrimaryText
         italicText

@@ -42,6 +42,7 @@ export const testTheme1: ThemeLight = {
     large: "https://firebasestorage.googleapis.com/v0/b/nemo-trunk.appspot.com/o/themes%2FtXPKsuOzyltLYHChdteo_mediumSmall?alt=media",
   },
   shortDescription: "<p><strong>The Analyst Stock Recommendations</strong> are determined by taking an average of all analyst <a href=\"https://google.com\" rel=\"noopener noreferrer\" target=\"_blank\">recommendations</a> and classifying them as Strong Buy, Buy, Hold, Sell or Strong Sell (Short)</p>",
+  // shortDescription: "<p>the stocks or investments that have experienced the highest percentage increase in value within a specified period.</p>",
 };
 
 export const testTheme2: ThemeLight = {

@@ -6,6 +6,7 @@ export type RootStackParamList = {
     filter: string;
   };
   Stocks: undefined;
+  Module: undefined;
 };
 
 export type NavigationPath = {
