@@ -21,6 +21,7 @@ import { getStocksCount } from "utils/getStocksCount";
 import { mockStore } from "../../../../../../_mockStore";
 import DatapointData from "./DatapointData";
 import { styles } from "./styles";
+import { useModule } from "../../context";
 
 type Props = {
   theme: ThemeLight | null;
@@ -28,7 +29,8 @@ type Props = {
 };
 
 const ThemeCard: FC<Props> = ({ theme }: Props) => {
-  const { module, analystChangesAmount } = mockStore;
+  const { analystChangesAmount } = mockStore;
+  const { module } = useModule();
 
   const { name, id, stockSymbols, template, averageDatapoints, pictures } = theme;
 
@@ -54,10 +56,7 @@ const ThemeCard: FC<Props> = ({ theme }: Props) => {
 
   return (
     <TouchableHighlight style={componentStyles.cardTouch} onPress={handleCardClick}>
-      <View
-        style={componentStyles.container}
-        onClick={handleCardClick}
-      >
+      <View style={componentStyles.container}>
         <ImageBackground
           source={{ uri: pictures.mediumSmall }}
           resizeMode="cover"

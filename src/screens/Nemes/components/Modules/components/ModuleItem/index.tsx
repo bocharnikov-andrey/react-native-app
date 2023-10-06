@@ -6,6 +6,7 @@ import { ModuleLayoutTypes, ModuleTypes, ModuleWithThemes } from "types/module";
 import NemesLayout from "./moduleTypes/Nemes";
 import { styles } from "./styles";
 import MarketsLayout from "./moduleTypes/Markets";
+import ModuleProvider from "./context";
 
 type Props = {
   module: ModuleWithThemes;
@@ -48,25 +49,27 @@ const ModuleItem: FC<Props> = ({ module, rank }) => {
   };
 
   return (
-    <View style={componentStyles.container}>
-      <ModuleHeader
-        title={name}
-        rightSide={
-          isVisibleSeeAllLink && (
-            <PrimaryText
-              style={componentStyles.seeAllLink}
-              fontSize={16}
-              fontWeight={500}
-              onPress={handleSeeAllPress}
-            >
-              See all
-            </PrimaryText>
-          )
-        }
-      />
-      {type === ModuleTypes.nemeModule && <NemesLayout moduleRank={rank} />}
-      {type === ModuleTypes.marketModule && <MarketsLayout moduleRank={rank} />}
-    </View>
+    <ModuleProvider value={{ module }}>
+      <View style={componentStyles.container}>
+        <ModuleHeader
+          title={name}
+          rightSide={
+            isVisibleSeeAllLink && (
+              <PrimaryText
+                style={componentStyles.seeAllLink}
+                fontSize={16}
+                fontWeight={500}
+                onPress={handleSeeAllPress}
+              >
+                See all
+              </PrimaryText>
+            )
+          }
+        />
+        {type === ModuleTypes.nemeModule && <NemesLayout moduleRank={rank} />}
+        {type === ModuleTypes.marketModule && <MarketsLayout moduleRank={rank} />}
+      </View>
+    </ModuleProvider>
   );
 };
 

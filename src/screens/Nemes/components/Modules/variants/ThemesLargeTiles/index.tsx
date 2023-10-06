@@ -3,17 +3,17 @@ import { useWindowDimensions } from "react-native";
 import take from "lodash.take";
 import Slider from "components/Slider";
 import { ThemeLight } from "types/theme";
-import { mockStore } from "../../../../_mockStore";
 import { CONTAINER_HORIZONTAL_PADDING } from "../../../../utils";
 import ThemeCard from "./components/ThemeCard";
 import { styles } from "./styles";
+import { useModule } from "../../components/ModuleItem/context";
 
 type Props = {
   moduleRank: number;
 };
 
 const ThemesLargeTiles: FC<Props> = ({ moduleRank }) => {
-  const { module } = mockStore;
+  const { module } = useModule();
   const visibleThemes = take(module.themes.items, 5);
   const { width } = useWindowDimensions();
 

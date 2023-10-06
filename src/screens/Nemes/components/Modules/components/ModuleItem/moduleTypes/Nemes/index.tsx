@@ -6,16 +6,15 @@ import { mockStore } from "../../../../../../_mockStore";
 import ThemeCard from "../../components/ThemeCard";
 import ThemesLargeTiles from "../../../../variants/ThemesLargeTiles";
 import ThemesLargeFeatureCarousel from "../../../../variants/ThemesLargeFeatureCarousel";
+import { useModule } from "../../context";
 
 type Props = {
   moduleRank: number;
 };
 
 const NemesLayout: FC<Props> = ({ moduleRank }) => {
-  const { module } = mockStore;
-  const nemesStore = {
-    analystChangesAmount: 2,
-  };
+  const { module } = useModule();
+  const { analystChangesAmount } = mockStore;
 
   if (module.layout === ModuleLayoutTypes.LARGE_FEATURE_CAROUSEL) {
     return <ThemesLargeFeatureCarousel moduleRank={moduleRank} />;
@@ -33,7 +32,7 @@ const NemesLayout: FC<Props> = ({ moduleRank }) => {
     >
       {module.themes.items.map((theme, index) => {
         const isEmptyAnalystRatingsChange =
-          nemesStore.analystChangesAmount === 0 &&
+          analystChangesAmount === 0 &&
           theme?.template === ThemeTemplate.ANALYST_RATINGS_CHANGES_TEMPLATE;
 
         if (isEmptyAnalystRatingsChange) {

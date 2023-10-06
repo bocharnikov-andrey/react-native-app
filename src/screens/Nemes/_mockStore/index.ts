@@ -10,7 +10,7 @@ export const mockStore = {
   // module: smallTilesModule,
   // module: mediumTilesModule,
   // module: largeTileModule,
-  // module: largeFeatureCarouselModule,
-  module: marketsModule,
+  module: largeFeatureCarouselModule,
+  // module: marketsModule,
   analystChangesAmount: 2,
 };
