@@ -1,10 +1,10 @@
 import {
   ModuleFeaturedAverageDatapointTypes,
   ModuleTendencyDatapointTypes
-} from "../../../../../../../../../../types/module";
-import { AverageDatapoints } from "../../../../../../../../../../types/theme";
-import { formatLongAmountInMillions } from "../../../../../../../../../../utils/formatLongAmount";
-import { COLORS } from "../../../../../../../../../../constants/colors";
+} from "types/module";
+import { AverageDatapoints } from "types/theme";
+import { formatLongAmountInMillions } from "utils/formatLongAmount";
+import { COLORS } from "constants/colors";
 
 export const getDatapointLabel = (
   value: number,

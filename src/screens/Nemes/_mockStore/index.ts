@@ -2,7 +2,7 @@ import {
   mediumTilesModule,
   smallTilesStackModule,
   smallTilesModule,
-  largeTileModule, largeFeatureCarouselModule
+  largeTileModule, largeFeatureCarouselModule, marketsModule
 } from "./module";
 
 export const mockStore = {
@@ -11,5 +11,6 @@ export const mockStore = {
   // module: mediumTilesModule,
   // module: largeTileModule,
   module: largeFeatureCarouselModule,
+  // module: marketsModule,
   analystChangesAmount: 2,
 };

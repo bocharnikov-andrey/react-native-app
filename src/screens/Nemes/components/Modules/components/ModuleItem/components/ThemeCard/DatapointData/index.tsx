@@ -1,12 +1,13 @@
 import { FC } from "react";
-import { View, StyleSheet } from "react-native";
-import PrimaryText from "../../../../../../../../../../components/PrimaryText";
-import { AverageDatapoints } from "../../../../../../../../../../types/theme";
+import PrimaryText from "components/PrimaryText";
+import ViewRow from "components/layout/ViewRow";
+import { AverageDatapoints } from "types/theme";
 import {
   ModuleFeaturedAverageDatapointTypes,
   ModuleTendencyDatapointTypes
-} from "../../../../../../../../../../types/module";
+} from "types/module";
 import { getDatapointLabel, getFormattedDatapointValue } from "./utils";
+import { styles } from "./styles";
 
 type Props = {
   averageDatapoints: AverageDatapoints;
@@ -28,7 +29,7 @@ const DatapointData: FC<Props> = (props) => {
   );
 
   return (
-    <View style={styles.container}>
+    <ViewRow style={styles.container} jc="flex-start">
       <PrimaryText
         fontWeight={500}
         textColor={datapointValue.color}
@@ -38,21 +39,8 @@ const DatapointData: FC<Props> = (props) => {
       <PrimaryText fontWeight={500}>
         {getDatapointLabel(datapointValue.value, featuredAverageDatapoint)}
       </PrimaryText>
-    </View>
+    </ViewRow>
   );
 };
-
-// <Typography variant="bodyMMedium" color={COLOR_WHITE_80}>
-//         {getDatapointLabel(datapointValue.value, featuredAverageDatapoint)}
-//       </Typography>
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    gap: 4,
-    flexWrap: "wrap",
-  },
-});
 
 export default DatapointData;

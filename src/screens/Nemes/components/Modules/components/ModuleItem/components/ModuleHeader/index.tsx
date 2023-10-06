@@ -1,7 +1,8 @@
 import { FC, ReactNode } from "react";
-import { StyleSheet, View } from "react-native";
-import PrimaryText from "../../../../../../../../components/PrimaryText";
-import { COLORS } from "../../../../../../../../constants/colors";
+import { View } from "react-native";
+import PrimaryText from "components/PrimaryText";
+import { COLORS } from "constants/colors";
+import { styles } from "./styles";
 
 type Props = {
   title: string;
@@ -22,14 +23,5 @@ const ModuleHeader: FC<Props> = ({ title, rightSide }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    // column-gap: 1rem;
-  },
-});
 
 export default ModuleHeader;

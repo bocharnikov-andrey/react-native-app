@@ -52,6 +52,7 @@ const Slider = <T,>({ style, data, renderItem, onSlideChange, sliderWidth, itemW
 const styles = StyleSheet.create({
   paginationContainer: {
     paddingVertical: 0,
+    marginTop: 16,
   },
   paginationDotContainer: {
     marginHorizontal: 4,

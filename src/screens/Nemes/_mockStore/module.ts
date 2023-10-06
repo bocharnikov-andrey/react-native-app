@@ -10,6 +10,7 @@ import {
   ModuleWithThemes
 } from "../../../types/module";
 import { testTheme1, testTheme2, testTheme3 } from "./themeLight";
+import { aaplStockLight, msftStockLight, nvdaStockLight, test4StockLight, test5StockLight } from "./stock";
 
 const commonModule: ModuleWithThemes = {
   id: "123",
@@ -23,7 +24,13 @@ const commonModule: ModuleWithThemes = {
   layout: ModuleLayoutTypes.MEDIUM_TILES,
   content: ModuleContentTypes.nemesByTags,
   // stocks: [],
-  // markets: [],
+  markets: [
+    aaplStockLight,
+    nvdaStockLight,
+    msftStockLight,
+    test4StockLight,
+    test5StockLight,
+  ],
   tendencyDatapoints: ModuleTendencyDatapointTypes.POSITIVE_AND_NEGATIVE_AVERAGE_DATAPOINTS,
   featuredAverageDatapoint: ModuleFeaturedAverageDatapointTypes.AVG_PRICE_CHANGE_1_DAY,
 
@@ -66,4 +73,12 @@ export const largeFeatureCarouselModule: ModuleWithThemes = {
   id: "5",
   name: "Large FC Module",
   layout: ModuleLayoutTypes.LARGE_FEATURE_CAROUSEL,
+};
+
+export const marketsModule: ModuleWithThemes = {
+  ...commonModule,
+  id: "6",
+  name: "Small Tiles Markets Module",
+  type: ModuleTypes.marketModule,
+  layout: ModuleLayoutTypes.SMALL_TILES,
 };

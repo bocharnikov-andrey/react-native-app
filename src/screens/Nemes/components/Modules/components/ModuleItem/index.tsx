@@ -1,11 +1,12 @@
 import { FC, useMemo } from "react";
-import { View, StyleSheet } from "react-native";
-import { COLORS } from "../../../../../../constants/colors";
+import { View } from "react-native";
+import PrimaryText from "components/PrimaryText";
 import ModuleHeader from "./components/ModuleHeader";
-import PrimaryText from "../../../../../../components/PrimaryText";
-import { ModuleLayoutTypes, ModuleTypes, ModuleWithThemes } from "../../../../../../types/module";
+import { ModuleLayoutTypes, ModuleTypes, ModuleWithThemes } from "types/module";
 import NemesLayout from "./moduleTypes/Nemes";
-import { CONTAINER_HORIZONTAL_PADDING } from "./utils";
+import { styles } from "./styles";
+import MarketsLayout from "./moduleTypes/Markets";
+import ModuleProvider from "./context";
 
 type Props = {
   module: ModuleWithThemes;
@@ -48,42 +49,28 @@ const ModuleItem: FC<Props> = ({ module, rank }) => {
   };
 
   return (
-    <View style={componentStyles.container}>
-      <ModuleHeader
-        title={name}
-        rightSide={
-          isVisibleSeeAllLink && (
-            <PrimaryText
-              style={componentStyles.seeAllLink}
-              fontSize={16}
-              fontWeight={500}
-              onPress={handleSeeAllPress}
-            >
-              See all
-            </PrimaryText>
-          )
-        }
-      />
-      {type === ModuleTypes.nemeModule && <NemesLayout moduleRank={rank} />}
-    </View>
+    <ModuleProvider value={{ module }}>
+      <View style={componentStyles.container}>
+        <ModuleHeader
+          title={name}
+          rightSide={
+            isVisibleSeeAllLink && (
+              <PrimaryText
+                style={componentStyles.seeAllLink}
+                fontSize={16}
+                fontWeight={500}
+                onPress={handleSeeAllPress}
+              >
+                See all
+              </PrimaryText>
+            )
+          }
+        />
+        {type === ModuleTypes.nemeModule && <NemesLayout moduleRank={rank} />}
+        {type === ModuleTypes.marketModule && <MarketsLayout moduleRank={rank} />}
+      </View>
+    </ModuleProvider>
   );
 };
-
-type StylesProps = {
-  isGreyVariant?: boolean;
-};
-
-const styles = ({ isGreyVariant }: StylesProps) => StyleSheet.create({
-  container: {
-    flexDirection: "column",
-    backgroundColor: isGreyVariant ? COLORS.whiteOpacity_10 : "initial",
-    rowGap: 16,
-    paddingVertical: 24,
-    paddingHorizontal: CONTAINER_HORIZONTAL_PADDING,
-  },
-  seeAllLink: {
-    textDecorationLine: "underline",
-  },
-});
 
 export default ModuleItem;

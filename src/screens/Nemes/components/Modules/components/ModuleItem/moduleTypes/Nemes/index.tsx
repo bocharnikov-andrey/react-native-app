@@ -1,29 +1,27 @@
 import { FC } from "react";
-import { StyleSheet, ScrollView } from "react-native";
-import { ModuleLayoutTypes } from "../../../../../../../../types/module";
-import { ThemeTemplate } from "../../../../../../../../types/theme";
+import { ModuleLayoutTypes } from "types/module";
+import { ThemeTemplate } from "types/theme";
 import ModuleLayout from "../../components/ModuleLayout";
 import { mockStore } from "../../../../../../_mockStore";
 import ThemeCard from "../../components/ThemeCard";
-import LargeTiles from "../../components/LargeTiles";
-import LargeFeatureCarousel from "../../components/LargeFeatureCarousel";
+import ThemesLargeTiles from "../../../../variants/ThemesLargeTiles";
+import ThemesLargeFeatureCarousel from "../../../../variants/ThemesLargeFeatureCarousel";
+import { useModule } from "../../context";
 
 type Props = {
   moduleRank: number;
 };
 
 const NemesLayout: FC<Props> = ({ moduleRank }) => {
-  const { module } = mockStore;
-  const nemesStore = {
-    analystChangesAmount: 2,
-  };
+  const { module } = useModule();
+  const { analystChangesAmount } = mockStore;
 
   if (module.layout === ModuleLayoutTypes.LARGE_FEATURE_CAROUSEL) {
-    return <LargeFeatureCarousel moduleRank={moduleRank} />;
+    return <ThemesLargeFeatureCarousel moduleRank={moduleRank} />;
   }
 
   if (module.layout === ModuleLayoutTypes.LARGE_TILE) {
-    return <LargeTiles moduleRank={moduleRank} />;
+    return <ThemesLargeTiles moduleRank={moduleRank} />;
   }
 
   return (
@@ -32,15 +30,9 @@ const NemesLayout: FC<Props> = ({ moduleRank }) => {
       moduleName={module.name}
       moduleRank={moduleRank}
     >
-      {module.themes.items.map((theme, index, arr) => {
-        const isFirst = index === 0;
-        const isLast = index === arr.length - 1;
-        const firstStyle = isFirst && styles.themeCardFirst;
-        const lastStyle = isLast && styles.themeCardLast;
-
-        const style = firstStyle || lastStyle;
+      {module.themes.items.map((theme, index) => {
         const isEmptyAnalystRatingsChange =
-          nemesStore.analystChangesAmount === 0 &&
+          analystChangesAmount === 0 &&
           theme?.template === ThemeTemplate.ANALYST_RATINGS_CHANGES_TEMPLATE;
 
         if (isEmptyAnalystRatingsChange) {
@@ -53,21 +45,11 @@ const NemesLayout: FC<Props> = ({ moduleRank }) => {
             theme={theme}
             rank={index + 1}
             moduleRank={moduleRank}
-            style={style}
           />
         );
       })}
     </ModuleLayout>
   );
 };
-
-const styles = StyleSheet.create({
-  themeCardFirst: {
-    paddingLeft: 16,
-  },
-  themeCardLast: {
-    marginRight: 16,
-  },
-});
 
 export default NemesLayout;
