@@ -8,6 +8,7 @@ import Portfolio from "../../screens/Portfolio";
 import Nemes from "../../screens/Nemes";
 import Stocks from "../../screens/Stocks";
 import { NavigationPath, RootStackParamList } from "../../types/navigation";
+import ModuleScreen from "../../screens/Module";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -15,6 +16,7 @@ const PATHS: NavigationPath[] = [
   { id: 1, name: "Portfolio", component: Portfolio },
   { id: 2, name: "Nemes", component: Nemes },
   { id: 3, name: "Stocks", component: Stocks },
+  { id: 4, name: "Module", component: ModuleScreen },
 ];
 
 const Navigation: FC = () => {

@@ -6,22 +6,27 @@ import { COLORS } from "../../constants/colors";
 type Props = {
   content: string;
   contentBackgroundColor?: "light" | "dark";
+  baseStyle?: MixedStyleDeclaration;
 };
 
-const RichText: FC<Props> = ({ content, contentBackgroundColor }) => {
+const RichText: FC<Props> = ({ content, contentBackgroundColor, baseStyle }) => {
   const {width} = useWindowDimensions();
+  const baseStyleOverride = {
+    ...baseStyleCommon,
+    ...(baseStyle ?? {})
+  };
 
   return (
     <RenderHtml
       source={{html: content}}
-      baseStyle={baseStyle}
+      baseStyle={baseStyleOverride}
       contentWidth={width}
       tagsStyles={tagsStyles({ contentBackgroundColor })}
     />
   );
 };
 
-const baseStyle: MixedStyleDeclaration = {
+const baseStyleCommon: MixedStyleDeclaration = {
   color: COLORS.white,
   fontSize: 16,
   fontWeight: "400",
