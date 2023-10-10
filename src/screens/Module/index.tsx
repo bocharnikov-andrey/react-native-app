@@ -19,7 +19,8 @@ const moduleTypesComponents: Record<
 
 const ModuleScreen: FC = () => {
   const isLoading = false;
-  const module: ModuleWithThemes = marketModule;
+  const module: ModuleWithThemes = nemeModule;
+  // const module: ModuleWithThemes = marketModule;
 
   const ContentComponent = moduleTypesComponents[module.type];
 

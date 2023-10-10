@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Text, View, TouchableHighlight, Image } from "react-native";
+import { View, Image, TouchableOpacity } from "react-native";
 import { StockSymbolLight } from "types/symbol";
 import { styles } from "./styles";
 import ViewRow from "../../layout/ViewRow";
@@ -20,7 +20,7 @@ const StockCard: FC<Props> = ({ stock, moduleName, moduleRank }) => {
   };
 
   return (
-    <TouchableHighlight style={styles.touchContainer} onPress={handleStockClick}>
+    <TouchableOpacity onPress={handleStockClick}>
       <ViewRow style={styles.container} jc="space-between">
         <View style={styles.leftColumn}>
           <StockLogo src={stock.picture} size={40}/>
@@ -33,7 +33,7 @@ const StockCard: FC<Props> = ({ stock, moduleName, moduleRank }) => {
           source={require("../../../../assets/images/favicon.png")}
         />
       </ViewRow>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 

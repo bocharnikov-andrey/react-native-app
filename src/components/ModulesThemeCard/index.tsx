@@ -1,5 +1,12 @@
 import { FC } from "react";
-import { Image, ImageBackground, StyleProp, Text, TouchableHighlight, View, ViewStyle } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  StyleProp,
+  TouchableOpacity,
+  View,
+  ViewStyle
+} from "react-native";
 import isEmpty from "lodash.isempty";
 import { richTextBaseStyle, styles } from "./styles";
 import { ThemeLight, ThemeTemplate } from "../../types/theme";
@@ -36,7 +43,10 @@ const ModulesThemeCard: FC<Props> = ({ data, rank, filter, style }) => {
 
   return (
     <View style={style}>
-      <TouchableHighlight onPress={handleThemeClick}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={handleThemeClick}
+      >
         <ImageBackground
           source={{ uri: imgUrl }}
           resizeMode="cover"
@@ -55,7 +65,7 @@ const ModulesThemeCard: FC<Props> = ({ data, rank, filter, style }) => {
             style={styles.stocksBadge}
           />
         </ImageBackground>
-      </TouchableHighlight>
+      </TouchableOpacity>
       <PrimaryText
         fontSize={16}
         fontWeight={700}

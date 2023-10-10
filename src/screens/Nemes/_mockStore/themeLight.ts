@@ -1,6 +1,7 @@
 import { AverageDatapoints, CollectionsSubcategory, ThemeLight, ThemeTemplate } from "../../../types/theme";
 import { ModuleFeaturedAverageDatapointTypes, ModuleTendencyDatapointTypes } from "../../../types/module";
 import { avgDatapoints } from "./avgDatapoints";
+import { aaplStockLight, msftStockLight, nvdaStockLight, test4StockLight, test5StockLight } from "./stock";
 
 const commonTheme: ThemeLight = {
   id: "123",
@@ -27,7 +28,13 @@ const commonTheme: ThemeLight = {
     targetPrice: false,
   },
   favoriteId: "123",
-  stockSymbols: ["AAPL"] as any,
+  stockSymbols: [
+    aaplStockLight,
+    nvdaStockLight,
+    msftStockLight,
+    test4StockLight,
+    test5StockLight,
+  ] as any,
 };
 
 export const testTheme1: ThemeLight = {
@@ -41,7 +48,8 @@ export const testTheme1: ThemeLight = {
     medium: "https://firebasestorage.googleapis.com/v0/b/nemo-trunk.appspot.com/o/themes%2FtXPKsuOzyltLYHChdteo_mediumSmall?alt=media",
     large: "https://firebasestorage.googleapis.com/v0/b/nemo-trunk.appspot.com/o/themes%2FtXPKsuOzyltLYHChdteo_mediumSmall?alt=media",
   },
-  shortDescription: "<p><strong>The Analyst Stock Recommendations</strong> are determined by taking an average of all analyst <a href=\"https://google.com\" rel=\"noopener noreferrer\" target=\"_blank\">recommendations</a> and classifying them as Strong Buy, Buy, Hold, Sell or Strong Sell (Short)</p>",
+  shortDescription: "These are stocks of companies that are leading the development and adoption of artificial intelligence (AI) technologies.",
+  // shortDescription: "<p><strong>The Analyst Stock Recommendations</strong> are determined by taking an average of all analyst <a href=\"https://google.com\" rel=\"noopener noreferrer\" target=\"_blank\">recommendations</a> and classifying them as Strong Buy, Buy, Hold, Sell or Strong Sell (Short)</p>",
   // shortDescription: "<p>the stocks or investments that have experienced the highest percentage increase in value within a specified period.</p>",
 };
 

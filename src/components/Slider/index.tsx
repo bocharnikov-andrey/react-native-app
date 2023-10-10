@@ -33,6 +33,7 @@ const Slider = <T,>({ style, data, renderItem, onSlideChange, sliderWidth, itemW
         onSnapToItem={handleSlideChange}
         sliderWidth={sliderWidth ?? width}
         itemWidth={itemWidth ?? width}
+        inactiveSlideScale={1}
       />
       <Pagination
         tappableDots

@@ -20,6 +20,7 @@
     "expo-status-bar": "~1.6.0",
     "expo-updates": "~0.18.14",
     "firebase": "9.19.1",
+    "html-to-text": "^9.0.5",
     "lodash.debounce": "^4.0.8",
     "lodash.isempty": "^4.4.0",
     "lodash.take": "^4.1.1",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@bettor-faster/eslint-config": "^0.0.9",
+    "@types/html-to-text": "^9.0.2",
     "@types/lodash.debounce": "^4.0.7",
     "@types/lodash.isempty": "^4.4.7",
     "@types/lodash.take": "^4.1.7",

@@ -2,9 +2,6 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "../../../constants/colors";
 
 export const styles = StyleSheet.create({
-  touchContainer: {
-    borderRadius: 12,
-  },
   container: {
     paddingTop: 4,
     paddingRight: 4,
